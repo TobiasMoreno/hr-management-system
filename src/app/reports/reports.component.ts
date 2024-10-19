@@ -28,7 +28,6 @@ export default class ReportsComponent {
     }
   ];
 
-  // Opciones de visualización
   view: [number, number] = [700, 400]; // Tamaño del gráfico
   showXAxis = true;
   showYAxis = true;

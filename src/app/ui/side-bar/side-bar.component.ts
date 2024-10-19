@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav'; 
+import { Component } from '@angular/core';
+import { MatSidenavModule } from '@angular/material/sidenav'; 
 import { MatToolbar } from '@angular/material/toolbar'; 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -27,9 +27,5 @@ import { MatListItem, MatNavList } from '@angular/material/list';
   styleUrl: './side-bar.component.css',
 })
 export class SideBarComponent {
-  @ViewChild('sidenav') sidenav!: MatSidenav;
 
-  toggleSidenav() {
-    this.sidenav.toggle();
-  }
 }

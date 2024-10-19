@@ -8,37 +8,48 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" opened class="border border-1">
     <mat-nav-list>
-      <mat-list-item >
-        <mat-icon class="mt-0">home</mat-icon>
-        <a matLine routerLink="/home">Home</a>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon>assignment_ind</mat-icon>
-        <a matLine routerLink="/employees">Employees</a>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon >assignment_turned_in</mat-icon>
-        <a matLine routerLink="/attendances">Attendances</a>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon>graphic_eq</mat-icon>
-        <a matLine routerLink="/reports">Reports</a>
-      </mat-list-item>
+      <a routerLink="/home">
+        <mat-list-item>
+          <mat-icon class="mt-0">home</mat-icon>
+          Home
+        </mat-list-item>
+      </a>
+      <a routerLink="/employees">
+        <mat-list-item>
+          <mat-icon>assignment_ind</mat-icon>
+          Employees
+        </mat-list-item>
+      </a>
+      <a routerLink="/attendances">
+        <mat-list-item>
+          <mat-icon>assignment_turned_in</mat-icon>
+          Attendances
+        </mat-list-item>
+      </a>
+      <a routerLink="/reports">
+        <mat-list-item>
+          <mat-icon>graphic_eq</mat-icon>
+          Reports
+        </mat-list-item>
+      </a>
+      <a routerLink="/development-plans">
       <mat-list-item>
         <mat-icon>developer_board</mat-icon>
-        <a matLine routerLink="/development-plans">Development Plans</a>
-      </mat-list-item>
+        Development Plans
+        </mat-list-item>
+      </a>
+      <a routerLink="/feedbacks">
       <mat-list-item>
         <mat-icon>feedback</mat-icon>
-        <a matLine routerLink="/feedbacks">Feedbacks</a>
-      </mat-list-item>
+        Feedbacks
+        </mat-list-item>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
     <div class="container">
       <router-outlet />
-
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
