@@ -38,6 +38,13 @@ To clone and run the frontend locally, follow these steps:
 
    ```bash
    npm install
+   npm install @swimlane/ngx-charts d3
+   npm install rxjs
+   npm install @swimlane/ngx-datatable
+   npm install @angular/material @angular/cdk
+
+   ## All together
+   npm install @swimlane/ngx-charts d3 rxjs @swimlane/ngx-datatable @angular/material @angular/cdk
    ```
 
 4. Run the application:
