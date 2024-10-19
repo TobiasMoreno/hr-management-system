@@ -1,0 +1,44 @@
+<mat-toolbar class="mat-elevation-z3">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Management System</span>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" opened class="border border-1">
+    <mat-nav-list>
+      <mat-list-item >
+        <mat-icon class="mt-0">home</mat-icon>
+        <a matLine href="#">Home</a>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>assignment_ind</mat-icon>
+        <a matLine routerLink="/employees">Employees</a>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon >assignment_turned_in</mat-icon>
+        <a matLine href="#">Attendances</a>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>graphic_eq</mat-icon>
+        <a matLine href="#">Graphics</a>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>developer_board</mat-icon>
+        <a matLine href="#">Development Plans</a>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>feedback</mat-icon>
+        <a matLine href="#">Feedbacks</a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="container">
+      <router-outlet />
+
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

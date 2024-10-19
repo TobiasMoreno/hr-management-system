@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SideBarComponent } from './ui/side-bar/side-bar.component';
+import { FooterComponent } from './ui/footer/footer.component';
+import { TableComponent } from './ui/table/table.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, SideBarComponent, FooterComponent,TableComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'sist-gestion-rrhh';
