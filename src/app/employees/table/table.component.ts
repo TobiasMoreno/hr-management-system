@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { IEmployee } from '../../shared/interface';
-import { EmployeeStateService } from '../../employees/services/employees-status.service';
+import { EmployeeStateService } from '../services/employees-status.service';
 import { CurrencyPipe } from '@angular/common';
 
 @Component({

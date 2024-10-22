@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SideBarComponent } from './ui/side-bar/side-bar.component';
 import { FooterComponent } from './ui/footer/footer.component';
-import { TableComponent } from './ui/table/table.component';
+import { TableComponent } from './employees/table/table.component';
 
 @Component({
   selector: 'app-root',

@@ -26,6 +26,10 @@ export const routes: Routes = [
     loadChildren: () => import('./feedbacks/feedbacks.routes'),
   },
   {
+    path: 'vacations',
+    loadChildren: () => import('./vacations/vacations.routes'),
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },
