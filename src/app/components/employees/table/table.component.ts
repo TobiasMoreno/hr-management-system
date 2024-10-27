@@ -22,7 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./table.component.css'],
   providers: [MatPaginator],
 })
-export class TableComponent<T> implements OnInit {
+export class TableComponent<T> implements OnInit,AfterViewInit {
   pdfService = inject(PrintPdfService);
 
   @Input() tableColumns: string[] = [];
@@ -39,11 +39,13 @@ export class TableComponent<T> implements OnInit {
 
   tableDataSource = new MatTableDataSource<T>(this.dataSource);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
 
   ngOnInit(): void {
       this.tableDataSource.data = this.dataSource;
+  }
+  ngAfterViewInit(): void {
       this.tableDataSource.paginator = this.paginator;
   }
 
