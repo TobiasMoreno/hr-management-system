@@ -1,0 +1,12 @@
+<div>
+  <h1 class="text-center m-2">Employees</h1>
+  <app-table
+    [dataSource]="employeeService.state().employees"
+    [tableColumns]="['ID', 'First Name', 'Last Name', 'Email', 'Phone Number']"
+    [displayedColumns]="['id', 'firstName', 'lastName', 'email', 'phoneNumber']"
+    [pdfTitle]="'Employee List'"
+    [pageSize]="5"
+  >
+    >
+  </app-table>
+</div>

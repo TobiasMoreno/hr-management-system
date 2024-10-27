@@ -3,31 +3,31 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: 'employees',
-    loadChildren: () => import('./employees/employees.routes'),
+    loadChildren: () => import('./components/employees/employees.routes'),
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.routes'),
+    loadChildren: () => import('./components/home/home.routes'),
   },
   {
     path: 'development-plans',
-    loadChildren: () => import('./development-plans/development-plans.routes'),
+    loadChildren: () => import('./components/development-plans/development-plans.routes'),
   },
   {
     path: 'attendances',
-    loadChildren: () => import('./attendances/attendances.routes'),
+    loadChildren: () => import('./components/attendances/attendances.routes'),
   },
   {
     path: 'reports',
-    loadChildren: () => import('./reports/reports.routes'),
+    loadChildren: () => import('./components/reports/reports.routes'),
   },
   {
     path: 'feedbacks',
-    loadChildren: () => import('./feedbacks/feedbacks.routes'),
+    loadChildren: () => import('./components/feedbacks/feedbacks.routes'),
   },
   {
     path: 'vacations',
-    loadChildren: () => import('./vacations/vacations.routes'),
+    loadChildren: () => import('./components/vacations/vacations.routes'),
   },
   {
     path: '**',

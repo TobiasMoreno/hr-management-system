@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SideBarComponent } from './ui/side-bar/side-bar.component';
-import { FooterComponent } from './ui/footer/footer.component';
-import { TableComponent } from './employees/table/table.component';
+import { SideBarComponent } from './shared/ui/side-bar/side-bar.component';
+import { FooterComponent } from './shared/ui/footer/footer.component';
+import { TableComponent } from './components/employees/table/table.component';
 
 @Component({
   selector: 'app-root',

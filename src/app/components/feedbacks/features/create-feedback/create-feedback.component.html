@@ -1,0 +1,49 @@
+<h1 class="text-center border-bottom">Create feedback</h1>
+<form [formGroup]="feedbackForm" (ngSubmit)="submit()">
+  <div class="mb-3">
+    <div class="d-flex">
+      <label for="performanceReviewId" class="form-label me-auto"
+        >Performance</label
+      >
+      <label>Today date: {{ today }}</label>
+    </div>
+    <select
+      class="form-control"
+      style="box-shadow: none"
+      formControlName="performanceReviewId"
+    >
+      <option value="" disabled selected>Select the Performance Review</option>
+      <option value="1">Performance Review 1</option>
+      <option value="2">Performance Review 2</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="feedbackGiverEmployeeId" class="form-label"
+      >Feedback giver</label
+    >
+    <select
+      class="form-control"
+      style="box-shadow: none"
+      formControlName="feedbackGiverEmployeeId"
+    >
+      <option value="" disabled selected>Select the Feedback Giver</option>
+      <option value="1">Employee 1</option>
+      <option value="2">Employee 2</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="comments" class="form-label">Comments</label>
+    <textarea
+      name="comments"
+      id="comments"
+      class="form-control"
+      formControlName="comments"
+    ></textarea>
+  </div>
+  <div class="d-flex">
+    <button class="me-auto btn btn-success" type="submit">Submit</button>
+    <button class="ms-auto btn btn-dark" type="reset">Cancel</button>
+  </div>
+</form>
+
+<ngx-sonner-toaster />
