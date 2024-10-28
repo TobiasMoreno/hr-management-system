@@ -1,8 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { EmployeeStateService } from './services/employees-state.service';
-import { BasicTableComponent } from './basic-table/basic-table.component';
+import { BasicTableComponent } from '../../shared/basic-table/basic-table.component';
 import { IEmployee, TableColumn } from '../../shared/interface';
 import { JsonPipe } from '@angular/common';
+import { toast } from 'ngx-sonner';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employees',
@@ -14,6 +16,7 @@ import { JsonPipe } from '@angular/common';
 })
 export default class EmployeesComponent implements OnInit {
   employeeService = inject(EmployeeStateService);
+  router = inject(Router);
 
   employees: IEmployee[] = [];
   pdfTitle: string = 'Employees';
@@ -235,7 +238,7 @@ export default class EmployeesComponent implements OnInit {
   }
 
   viewDetails(employee: IEmployee) :void{
+    this.router.navigateByUrl('/employees/detail/'+ employee.id)
     console.log(employee.id);
-    
   }
 }

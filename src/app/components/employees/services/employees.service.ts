@@ -8,7 +8,7 @@ export class EmployeeService extends BaseHttpService {
   getEmployees(): Observable<IEmployee[]> {
     return this.http.get<IEmployee[]>(this.employeeUrl + '/list');
   }
-  getEmployeeById(id: number): Observable<IEmployee> {
+  getEmployeeById(id: string): Observable<IEmployee> {
     return this.http.get<IEmployee>(this.employeeUrl + '/' + id);
   }
 

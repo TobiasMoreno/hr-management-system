@@ -1,4 +1,3 @@
-import { TemplateRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 export interface IEmployee {
@@ -11,10 +10,16 @@ export interface IEmployee {
   departmentId: number;
   salary: number;
 }
+
+export interface EmployeeState {
+  employee: IEmployee | null;
+  status: 'Loading' | 'Success' | 'Error';
+}
+
 export interface EmployeesState {
   employees: IEmployee[];
   status: 'Loading' | 'Success' | 'Error';
-  filter: {query: string; page: number}
+  filter: { query: string; page: number };
 }
 
 export interface TableColumn {
@@ -32,4 +37,15 @@ export interface FeedbackForm {
   feedbackGiverEmployeeId: FormControl<number | null>;
   comments: FormControl<string | null>;
   feedbackDate: FormControl<string | null>;
+}
+
+export interface EmployeeDetailForm {
+  id: FormControl<number | null>;
+  firstName: FormControl<string | null>;
+  lastName: FormControl<string | null>;
+  email: FormControl<string | null>;
+  phoneNumber: FormControl<string | null>;
+  hireDate: FormControl<Date | null>;
+  departmentId: FormControl<number | null>;
+  salary: FormControl<number | null>;
 }

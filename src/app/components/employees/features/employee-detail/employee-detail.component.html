@@ -1,0 +1,61 @@
+<h1 class="text-center">Employee Detail</h1>
+
+<form [formGroup]="employeeDetailForm" class="container mt-4">
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phoneNumber" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Hire Date</mat-label>
+        <input matInput formControlName="hireDate" type="date" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Department Id</mat-label>
+        <input matInput formControlName="departmentId" type="number" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Salary</mat-label>
+        <input matInput formControlName="salary" type="number" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 d-flex justify-content-center mt-4">
+      <button mat-raised-button type="submit" class="me-auto" routerLink="/employees">
+        List of Employees
+      </button>
+      <button mat-raised-button>Update</button>
+    </div>
+  </div>
+</form>

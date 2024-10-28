@@ -14,9 +14,9 @@ import {
   MatTableDataSource,
   MatTableModule,
 } from '@angular/material/table';
-import { TableColumn } from '../../../shared/interface';
+import { TableColumn } from '../interface';
 import { MatIcon } from '@angular/material/icon';
-import { PrintPdfService } from '../../../shared/services/print-pdf.service';
+import { PrintPdfService } from '../services/print-pdf.service';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -41,7 +41,7 @@ export class BasicTableComponent<T>
   @Input() data: T[] = [];
   displayedColumns: string[] = [];
   @Input() pdfTitle: string = '';
-  @Input() pageSize = 5;
+  @Input() pageSize = 10;
   @Input() actionHandler: (element: T) => void = () => {};
   
   dataSource = new MatTableDataSource<T>(this.data);

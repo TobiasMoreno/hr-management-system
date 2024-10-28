@@ -15,16 +15,16 @@ import { EmployeesState } from '../../../shared/interface';
 export class EmployeeStateService {
   private employeeService = inject(EmployeeService);
 
-  private _employeeInitalState: EmployeesState = {
+  private _employeesInitalState: EmployeesState = {
     employees: [],
     status: 'Loading' as const,
-    filter: {query:'', page:1}
+    filter: { query: '', page: 1 },
   };
 
   employees$ = new BehaviorSubject<EmployeesState>({
     employees: [],
     status: 'Loading' as const,
-    filter: {query:'', page:1}
+    filter: { query: '', page: 1 },
   });
 
   changePage$ = new Subject<number>();
@@ -49,7 +49,7 @@ export class EmployeeStateService {
   );
 
   state = signalSlice({
-    initialState: this._employeeInitalState,
+    initialState: this._employeesInitalState,
     sources: [
       this.changePage$.pipe(
         map((size, page) => ({ size, page, status: 'Loading' as const }))
