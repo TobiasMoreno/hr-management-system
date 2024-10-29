@@ -1,10 +1,13 @@
-<div>
-  <h1 class="text-center m-2">Employees</h1>
-  <app-basic-table
-    [columns]="columns"
-    [data]="employeeService.state().employees"
-    [pdfTitle]="pdfTitle"
-    [actionHandler]="viewDetails.bind(this)"
-  ></app-basic-table>
-</div>
+<h1 class="text-center m-2">Employees</h1>
+<section class="me-auto m-2">
+  <button mat-raised-button routerLink="/employees/create" class="text-dark">
+    New Employee
+  </button>
+</section>
 
+<app-basic-table
+  [columns]="columns"
+  [data]="employeeService.state().employees"
+  [pdfTitle]="pdfTitle"
+  [actionHandler]="viewDetails.bind(this)"
+></app-basic-table>

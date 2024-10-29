@@ -1,0 +1,113 @@
+<h1 class="text-center">New Employee</h1>
+
+<form
+  [formGroup]="newEmployeeForm"
+  class="container mt-4"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <mat-label>First Name</mat-label>
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" />
+        <mat-error>
+          @if (newEmployeeForm.get('firstName')?.invalid &&
+          newEmployeeForm.get('firstName')?.touched) { First Name is required. }
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <mat-label>Last Name</mat-label>
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" />
+        <mat-error>
+          @if (newEmployeeForm.get('lastName')?.invalid &&
+          newEmployeeForm.get('lastName')?.touched) { Last Name is required. }
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <mat-label>Email</mat-label>
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" />
+        <mat-error>
+          @if (newEmployeeForm.get('email')?.invalid &&
+          newEmployeeForm.get('email')?.touched) { Email is required. } @else if
+          (newEmployeeForm.get('email')?.invalid &&
+          newEmployeeForm.get('email')?.touched) {Enter a valid email.}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <mat-label>Phone Number</mat-label>
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phoneNumber" />
+        <mat-error>
+          @if (newEmployeeForm.get('phoneNumber')?.hasError('required')) { Phone
+          Number is required. }
+        </mat-error>
+        <mat-error>
+          @if (newEmployeeForm.get('phoneNumber')?.hasError('maxlength') ||
+          newEmployeeForm.get('phoneNumber')?.hasError('minlength')) { Phone
+          Number must be 10 digits. }
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <mat-label>Hire Date</mat-label>
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Hire Date</mat-label>
+        <input matInput formControlName="hireDate" type="date" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Department Id</mat-label>
+        <mat-select formControlName="departmentId">
+          <mat-option [value]="null" selected>Choose the department</mat-option>
+          <mat-option [value]="1">1</mat-option>
+          <mat-option [value]="2">2</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <mat-label>Salary</mat-label>
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Salary</mat-label>
+        <input matInput formControlName="salary" type="number" />
+        <mat-error>
+          @if (newEmployeeForm.get('salary')?.invalid &&
+          newEmployeeForm.get('salary')?.touched) { Salary is required. }
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 d-flex justify-content-center mt-4">
+      <button
+        mat-raised-button
+        type="submit"
+        class="me-auto text-dark"
+        routerLink="/employees"
+      >
+        List of Employees
+      </button>
+      <button
+        mat-raised-button
+        [disabled]="newEmployeeForm.invalid"
+        (click)="onSubmit()"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</form>

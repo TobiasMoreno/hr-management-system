@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { BaseHttpService } from '../../../shared/data-access/base-http.service';
 import { IEmployee } from '../../../shared/interface';
 
@@ -19,5 +19,10 @@ export class EmployeeService extends BaseHttpService {
     return this.http.get<IEmployee[]>(
       this.employeeUrl + '/list-size?page=' + page + '&size=' + size
     );
+  }
+  createEmployee(employee: IEmployee): Observable<IEmployee> {
+    return this.http
+      .post<IEmployee>(this.employeeUrl + '/create', employee)
+      .pipe(tap(() => this.getEmployees()));
   }
 }

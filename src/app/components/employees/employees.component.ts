@@ -4,12 +4,13 @@ import { BasicTableComponent } from '../../shared/basic-table/basic-table.compon
 import { IEmployee, TableColumn } from '../../shared/interface';
 import { JsonPipe } from '@angular/common';
 import { toast } from 'ngx-sonner';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-employees',
   standalone: true,
-  imports: [BasicTableComponent, JsonPipe],
+  imports: [BasicTableComponent, JsonPipe, MatButtonModule, RouterLink],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.css',
   providers: [EmployeeStateService],

@@ -65,6 +65,7 @@ export default class EmployeeDetailComponent implements OnInit {
 
     if (employeeData) {
       this.employeeDetailForm.patchValue({
+        id:employeeData.id,
         firstName: employeeData.firstName,
         lastName: employeeData.lastName,
         email: employeeData.email,
