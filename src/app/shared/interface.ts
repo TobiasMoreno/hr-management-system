@@ -6,10 +6,22 @@ export interface IEmployee {
   lastName: string;
   email: string;
   phoneNumber: string;
+  hireDate: string;
+  departmentId: number;
+  salary: number;
+}
+
+export interface IEmployeeDTO {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
   hireDate: Date;
   departmentId: number;
   salary: number;
 }
+
+
 
 export interface EmployeeState {
   employee: IEmployee | null;
@@ -45,7 +57,7 @@ export interface EmployeeDetailForm {
   lastName: FormControl<string | null>;
   email: FormControl<string | null>;
   phoneNumber: FormControl<string | null>;
-  hireDate: FormControl<Date | null>;
+  hireDate: FormControl<string | null>;
   departmentId: FormControl<number | null>;
   salary: FormControl<number | null>;
 }

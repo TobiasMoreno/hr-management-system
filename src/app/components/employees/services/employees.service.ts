@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { BaseHttpService } from '../../../shared/data-access/base-http.service';
-import { IEmployee } from '../../../shared/interface';
+import { IEmployee, IEmployeeDTO } from '../../../shared/interface';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeService extends BaseHttpService {
@@ -24,5 +24,12 @@ export class EmployeeService extends BaseHttpService {
     return this.http
       .post<IEmployee>(this.employeeUrl + '/create', employee)
       .pipe(tap(() => this.getEmployees()));
+  }
+
+  updateEmployee(employee: IEmployeeDTO, id: number): Observable<IEmployee> {
+    return this.http.put<IEmployee>(
+      this.employeeUrl + '/update/' + id,
+      employee
+    );
   }
 }

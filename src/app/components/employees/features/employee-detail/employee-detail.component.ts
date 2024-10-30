@@ -1,15 +1,13 @@
-import { Component, inject, effect, Input, OnInit } from '@angular/core';
-import {
-  EmployeeDetailForm,
-  EmployeeState,
-} from '../../../../shared/interface';
+import { Component, inject, Input, OnInit } from '@angular/core';
+import { EmployeeDetailForm, IEmployee, IEmployeeDTO } from '../../../../shared/interface';
 import { JsonPipe } from '@angular/common';
-import { EmployeeDetailStateService } from '../../services/employee-detail-state.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { EmployeeService } from '../../services/employees.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-employee-detail',
@@ -21,17 +19,17 @@ import { RouterLink } from '@angular/router';
     MatLabel,
     MatButtonModule,
     MatInputModule,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './employee-detail.component.html',
   styleUrl: './employee-detail.component.css',
-  providers: [EmployeeDetailStateService],
+  providers: [EmployeeService],
 })
 export default class EmployeeDetailComponent implements OnInit {
-  employeeService = inject(EmployeeDetailStateService);
-  employee = this.employeeService.state().employee;
-
+  employeeService = inject(EmployeeService);
+  _snackBar = inject(MatSnackBar);
   private _fb = inject(FormBuilder);
+  _router = inject(Router);
 
   employeeDetailForm = this._fb.group<EmployeeDetailForm>({
     id: this._fb.control(null, [Validators.required]),
@@ -39,43 +37,52 @@ export default class EmployeeDetailComponent implements OnInit {
     lastName: this._fb.control('', [Validators.required]),
     email: this._fb.control('', [Validators.required]),
     phoneNumber: this._fb.control('', [Validators.required]),
-    hireDate: this._fb.control(new Date, [Validators.required]),
+    hireDate: this._fb.control('', [Validators.required]),
     departmentId: this._fb.control(null, [Validators.required]),
     salary: this._fb.control(null, [Validators.required]),
   });
 
   @Input() id!: string;
 
-  employeeInitialState: EmployeeState = {
-    employee: null,
-    status: 'Loading',
-  };
-
-  constructor() {
-    effect(() => {
-      this.employeeService.state.getById(this.id);
+  ngOnInit(): void {
+    const employeeData = this.employeeService.getEmployeeById(this.id);
+    employeeData.subscribe({
+      next: (employee) => {
+        if (employee) {
+          
+          const formattedEmployee = {
+            ...employee,
+            hireDate: new Date(employee.hireDate).toISOString().split('T')[0]
+          };
+          this.employeeDetailForm.patchValue(formattedEmployee);
+        } else {
+          this.employeeDetailForm.disable();
+        }
+      },
+      error: () => this.employeeDetailForm.disable(),
     });
   }
 
-  ngOnInit(): void {
-    this.employeeService.state.getById(this.id);
+  update(): void {
+    const employee = this.employeeDetailForm.value as IEmployee;
 
-    const employeeData = this.employeeService.state().employee;
-    console.log(employeeData);
-
-    if (employeeData) {
-      this.employeeDetailForm.patchValue({
-        id:employeeData.id,
-        firstName: employeeData.firstName,
-        lastName: employeeData.lastName,
-        email: employeeData.email,
-        phoneNumber: employeeData.phoneNumber,
-        hireDate: employeeData.hireDate,
-        departmentId: employeeData.departmentId,
-        salary: employeeData.salary,
-      });
-    }else{
-      this.employeeDetailForm.disable();
-    }
+    const formattedEmployee: IEmployeeDTO = {
+      firstName: employee.firstName,
+      lastName: employee.lastName,
+      email: employee.email,
+      phoneNumber: employee.phoneNumber,
+      hireDate: new Date(employee.hireDate),
+      departmentId: employee.departmentId,
+      salary: employee.salary,
+    };
+  
+    this.employeeService.updateEmployee(formattedEmployee, employee.id).subscribe({
+      next: () => {
+        this._snackBar.open('Employee updated successfully', 'Close', { duration: 3000 });
+        this._router.navigateByUrl('employees');
+      },
+      error: (e) => this._snackBar.open('Error updating employee', e),
+    });
   }
+  
 }
