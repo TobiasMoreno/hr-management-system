@@ -278,6 +278,7 @@ export default class EmployeesComponent implements OnInit {
       this.pdfTitle,
       contentPdf,
       headerNames,
+      undefined,
       formatters
     );
   }
