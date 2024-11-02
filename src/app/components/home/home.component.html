@@ -6,12 +6,45 @@
   </p>
 
   <h2>Key Features</h2>
-  <ul>
-    <li>Employee Management</li>
-    <li>Absence and Leave Tracking</li>
-    <li>Detailed Reporting</li>
-    <li>User-friendly and Accessible Interface</li>
-  </ul>
+  <mat-list role="list">
+    <mat-list-item role="listitem">Employee Management</mat-list-item>
+    <mat-list-item role="listitem">Absence and Leave Tracking</mat-list-item>
+    <mat-list-item role="listitem">Detailed Reporting</mat-list-item>
+    <mat-list-item role="listitem"
+      >User-friendly and Accessible Interface</mat-list-item
+    >
+  </mat-list>
+
+  <mat-tree
+    #tree
+    [dataSource]="dataSource"
+    [childrenAccessor]="childrenAccessor"
+  >
+    <!-- This is the tree node template for leaf nodes -->
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+      <!-- use a disabled button to provide padding for tree leaf -->
+      <button mat-icon-button disabled></button>
+      {{ node.name }}
+    </mat-tree-node>
+    <!-- This is the tree node template for expandable nodes -->
+    <mat-tree-node
+      *matTreeNodeDef="let node; when: hasChild"
+      matTreeNodePadding
+      matTreeNodeToggle
+      [cdkTreeNodeTypeaheadLabel]="node.name"
+    >
+      <button
+        mat-icon-button
+        matTreeNodeToggle
+        [attr.aria-label]="'Toggle ' + node.name"
+      >
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{ tree.isExpanded(node) ? "expand_more" : "chevron_right" }}
+        </mat-icon>
+      </button>
+      {{ node.name }}
+    </mat-tree-node>
+  </mat-tree>
 
   <h2>User Testimonials</h2>
   <blockquote>

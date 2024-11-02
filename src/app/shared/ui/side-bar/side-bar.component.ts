@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatListItem, MatNavList } from '@angular/material/list';
+import { FooterComponent } from '../footer/footer.component';
 
 
 @Component({
@@ -21,7 +22,8 @@ import { MatListItem, MatNavList } from '@angular/material/list';
     MatSidenavModule,
     MatListItem,
     MatNavList,
-    RouterLink
+    RouterLink,
+    FooterComponent
   ],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css',

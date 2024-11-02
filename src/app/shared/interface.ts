@@ -21,8 +21,6 @@ export interface IEmployeeDTO {
   salary: number;
 }
 
-
-
 export interface EmployeeState {
   employee: IEmployee | null;
   status: 'Loading' | 'Success' | 'Error';
@@ -60,4 +58,8 @@ export interface EmployeeDetailForm {
   hireDate: FormControl<string | null>;
   departmentId: FormControl<number | null>;
   salary: FormControl<number | null>;
+}
+
+export interface PdfData {
+  [key: string]: any;
 }

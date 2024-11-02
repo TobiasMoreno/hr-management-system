@@ -1,16 +1,16 @@
-<mat-toolbar class="mat-elevation-z3 ">
+<mat-toolbar class="mat-elevation-z3">
   <button mat-icon-button (click)="sidenav.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
   <span>Management System</span>
 </mat-toolbar>
 
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="side" opened class="border border-1">
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened class="border vh-100">
     <mat-nav-list>
       <a routerLink="/home">
         <mat-list-item>
-          <mat-icon class="mt-0">home</mat-icon>
+          <mat-icon>home</mat-icon>
           Home
         </mat-list-item>
       </a>
@@ -33,29 +33,38 @@
         </mat-list-item>
       </a>
       <a routerLink="/development-plans">
-      <mat-list-item>
-        <mat-icon>developer_board</mat-icon>
-        Development Plans
+        <mat-list-item>
+          <mat-icon>developer_board</mat-icon>
+          Development Plans
         </mat-list-item>
       </a>
       <a routerLink="/feedbacks">
-      <mat-list-item>
-        <mat-icon>feedback</mat-icon>
-        Feedbacks
+        <mat-list-item>
+          <mat-icon>feedback</mat-icon>
+          Feedbacks
         </mat-list-item>
       </a>
       <a routerLink="/vacations">
-      <mat-list-item>
-        <mat-icon>wb_sunny</mat-icon>
-        Vacations
+        <mat-list-item>
+          <mat-icon>wb_sunny</mat-icon>
+          Vacations
+        </mat-list-item>
+      </a>
+      <a routerLink="/settings">
+        <mat-list-item>
+          <mat-icon>settings</mat-icon>
+          Settings
         </mat-list-item>
       </a>
     </mat-nav-list>
   </mat-sidenav>
 
-  <mat-sidenav-content class="mt-3">
+  <mat-sidenav-content>
     <div class="container">
-      <router-outlet />
+      <router-outlet></router-outlet>
+    </div>
+    <div class="mt-2">
+      <app-footer></app-footer>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

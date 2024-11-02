@@ -3,11 +3,12 @@
   <button mat-raised-button routerLink="/employees/create" class="text-dark">
     New Employee
   </button>
+  <button mat-raised-button (click)="downloadPDF()" class="me-auto text-dark ms-2">
+    <mat-icon>print</mat-icon> Print
+  </button>
 </section>
-
 <app-basic-table
   [columns]="columns"
-  [data]="employeeService.state().employees"
-  [pdfTitle]="pdfTitle"
+  [data]="EMPLOYEES_DATA"
   [actionHandler]="viewDetails.bind(this)"
 ></app-basic-table>

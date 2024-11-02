@@ -14,7 +14,7 @@ import {
   MatTableDataSource,
   MatTableModule,
 } from '@angular/material/table';
-import { TableColumn } from '../interface';
+import { PdfData, TableColumn } from '../interface';
 import { MatIcon } from '@angular/material/icon';
 import { PrintPdfService } from '../services/print-pdf.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -40,10 +40,8 @@ export class BasicTableComponent<T>
   @Input() columns!: TableColumn[];
   @Input() data: T[] = [];
   displayedColumns: string[] = [];
-  @Input() pdfTitle: string = '';
-  @Input() pageSize = 10;
   @Input() actionHandler: (element: T) => void = () => {};
-  
+
   dataSource = new MatTableDataSource<T>(this.data);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -61,11 +59,5 @@ export class BasicTableComponent<T>
       this.dataSource.data = changes['data'].currentValue;
     }
   }
-
-  downloadPDF() {
-    const columnStrings = this.columns.map((column) => column.headerName.toString());
-    this.pdfService.generatePDF(this.data, this.pdfTitle, columnStrings);
-  }
-
-
+  
 }

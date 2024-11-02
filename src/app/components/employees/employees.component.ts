@@ -3,14 +3,21 @@ import { EmployeeStateService } from './services/employees-state.service';
 import { BasicTableComponent } from '../../shared/basic-table/basic-table.component';
 import { IEmployee, TableColumn } from '../../shared/interface';
 import { JsonPipe } from '@angular/common';
-import { toast } from 'ngx-sonner';
 import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { PrintPdfService } from '../../shared/services/print-pdf.service';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-employees',
   standalone: true,
-  imports: [BasicTableComponent, JsonPipe, MatButtonModule, RouterLink],
+  imports: [
+    BasicTableComponent,
+    JsonPipe,
+    MatButtonModule,
+    RouterLink,
+    MatIcon,
+  ],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.css',
   providers: [EmployeeStateService],
@@ -18,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
 export default class EmployeesComponent implements OnInit {
   employeeService = inject(EmployeeStateService);
   router = inject(Router);
+  pdfService = inject(PrintPdfService);
 
   employees: IEmployee[] = [];
   pdfTitle: string = 'Employees';
@@ -232,14 +240,45 @@ export default class EmployeesComponent implements OnInit {
     { headerName: 'Last Name', accessorKey: 'lastName' },
     { headerName: 'Email', accessorKey: 'email' },
     { headerName: 'Phone Number', accessorKey: 'phoneNumber' },
+    { headerName: 'Salary', accessorKey: 'salary' },
+    { headerName: 'Hire Date', accessorKey: 'hireDate' },
+    { headerName: 'Department Id', accessorKey: 'departmentId' },
     { headerName: 'Actions', accessorKey: 'Actions' },
   ];
   ngOnInit(): void {
     this.employees = this.employeeService.state.employees();
   }
 
-  viewDetails(employee: IEmployee) :void{
-    this.router.navigateByUrl('/employees/detail/'+ employee.id)
+  viewDetails(employee: IEmployee): void {
+    this.router.navigateByUrl('/employees/detail/' + employee.id);
     console.log(employee.id);
+  }
+
+  downloadPDF() {
+    const contentPdf: string[] = [];
+    this.columns
+      .filter((column) => column.headerName !== 'Actions')
+      .map((column) => column.accessorKey)
+      .forEach((column) => contentPdf.push(column));
+
+    const headerNames: string[] = [];
+    this.columns
+      .filter((column) => column.headerName !== 'Actions')
+      .map((column) => column.headerName)
+      .forEach((column) => headerNames.push(column));
+
+    const formatters = {
+      salary: (item: IEmployee) => `$${item.salary.toFixed(2)}`,
+      hireDate: (item: IEmployee) =>
+        new Date(item.hireDate).toLocaleDateString(),
+    };
+
+    this.pdfService.generatePDF(
+      this.EMPLOYEES_DATA,
+      this.pdfTitle,
+      contentPdf,
+      headerNames,
+      formatters
+    );
   }
 }

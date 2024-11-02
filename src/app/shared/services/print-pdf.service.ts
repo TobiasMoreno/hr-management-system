@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import jsPdf from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { PdfData } from '../interface';
 
 @Injectable({
   providedIn: 'root',
@@ -8,55 +9,58 @@ import autoTable from 'jspdf-autotable';
 export class PrintPdfService {
   constructor() {}
 
-  generatePDF(data: any[], title: string, header: string[]) {
+  generatePDF<T extends PdfData>(
+    data: T[],
+    title: string,
+    content: string[],
+    headerNames: string[],
+    columnStyles?: any,
+    formatters?: { [key: string]: (item: T) => any }
+  ) {
     const doc = new jsPdf({
       orientation: 'landscape',
       unit: 'px',
       format: 'a4',
     });
+    const pageWidth = doc.internal.pageSize.width;
 
     doc.setFontSize(18);
-    doc.text(title, doc.internal.pageSize.width / 2, 25, { align: 'center' });
+    doc.text(title, pageWidth / 2, 25, { align: 'center' });
     doc.setFontSize(12);
     doc.setTextColor(100);
 
-    const pageWidth = doc.internal.pageSize.width;
-    const columnWidth = pageWidth / header.length - 4;
+    const defaultColumnWidth = pageWidth / content.length - 4;
+
+    const body = data.map((item) =>
+      content.map((field) =>
+        formatters && formatters[field] ? formatters[field](item) : item[field]
+      )
+    );
+    
 
     autoTable(doc, {
-      head: [header],
-      body: data.map((item) => [
-        item.id,
-        item.firstName,
-        item.lastName,
-        item.email,
-        item.phoneNumber,
-        item.hireDate,
-        item.departmentId,
-        item.salary,
-      ]),
-
+      head: [headerNames],
+      body,
       headStyles: {
-        fillColor: [41, 128, 185],
+        fillColor: [0, 102, 204],
         textColor: [255, 255, 255],
+        fontStyle: 'bold',
       },
       styles: {
-        halign: 'center', // Centra el texto en cada celda
-        overflow: 'linebreak', // Evita truncamientos
-        cellPadding: 3, // Ajusta el espacio en celdas
+        halign: 'center',
+        overflow: 'linebreak',
+        cellPadding: 5,
+        minCellHeight: 20,
+        fontSize: 10,
       },
-      columnStyles: {
-        0: { cellWidth: columnWidth, minCellHeight: 30 },
-        1: { cellWidth: columnWidth, minCellHeight: 30 },
-        2: { cellWidth: columnWidth, minCellHeight: 30 },
-        3: { cellWidth: columnWidth, minCellHeight: 30 },
-        4: { cellWidth: columnWidth, minCellHeight: 30 },
-        5: { cellWidth: columnWidth, minCellHeight: 30 },
-        6: { cellWidth: columnWidth, minCellHeight: 30 },
-        7: { cellWidth: columnWidth, minCellHeight: 30 },
-        // Añade más columnas según tu configuración
-      },
+      columnStyles:
+        columnStyles ||
+        content.reduce<{ [key: number]: any }>((acc, _, index) => {
+          acc[index] = { cellWidth: defaultColumnWidth, minCellHeight: 30 };
+          return acc;
+        }, {}),
     });
+    console.log(content);
 
     doc.save(title + '.pdf');
   }
