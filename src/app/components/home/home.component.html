@@ -1,68 +1,65 @@
 <div class="container mt-5">
-  <h1 class="text-center">Human Resources Management System</h1>
+  <!-- Header -->
+  <header class="text-center mb-4">
+    <h1>Welcome to HR Nexus</h1>
+    <p class="lead">Streamline your HR processes and empower your team.</p>
+  </header>
 
-  <p class="text-center">
-    Manage your team efficiently with our intuitive platform.
-  </p>
+  <!-- Main Content -->
+  <div class="row">
+    <!-- Feature Card 1 -->
+    <div class="col-md-4 mb-4">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Employee Management</mat-card-title>
+          <mat-card-subtitle>Organize and manage your employee records efficiently</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Keep track of employee details, performance reviews, and development plans in one place.</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary" routerLink="/employees">Learn More</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
 
-  <h2>Key Features</h2>
-  <mat-list role="list">
-    <mat-list-item role="listitem">Employee Management</mat-list-item>
-    <mat-list-item role="listitem">Absence and Leave Tracking</mat-list-item>
-    <mat-list-item role="listitem">Detailed Reporting</mat-list-item>
-    <mat-list-item role="listitem"
-      >User-friendly and Accessible Interface</mat-list-item
-    >
-  </mat-list>
+    <!-- Feature Card 2 -->
+    <div class="col-md-4 mb-4">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Time Off Management</mat-card-title>
+          <mat-card-subtitle>Handle vacation requests and track leave efficiently</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Manage vacation requests, approvals, and employee availability with ease.</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary" routerLink="/vacations">Learn More</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
 
-  <mat-tree
-    #tree
-    [dataSource]="dataSource"
-    [childrenAccessor]="childrenAccessor"
-  >
-    <!-- This is the tree node template for leaf nodes -->
-    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-      <!-- use a disabled button to provide padding for tree leaf -->
-      <button mat-icon-button disabled></button>
-      {{ node.name }}
-    </mat-tree-node>
-    <!-- This is the tree node template for expandable nodes -->
-    <mat-tree-node
-      *matTreeNodeDef="let node; when: hasChild"
-      matTreeNodePadding
-      matTreeNodeToggle
-      [cdkTreeNodeTypeaheadLabel]="node.name"
-    >
-      <button
-        mat-icon-button
-        matTreeNodeToggle
-        [attr.aria-label]="'Toggle ' + node.name"
-      >
-        <mat-icon class="mat-icon-rtl-mirror">
-          {{ tree.isExpanded(node) ? "expand_more" : "chevron_right" }}
-        </mat-icon>
-      </button>
-      {{ node.name }}
-    </mat-tree-node>
-  </mat-tree>
+    <!-- Feature Card 3 -->
+    <div class="col-md-4 mb-4">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Performance Tracking</mat-card-title>
+          <mat-card-subtitle>Assess and improve employee performance continuously</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Use metrics and feedback to guide employee growth and development.</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary" routerLink="/development-plans">Learn More</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
 
-  <h2>User Testimonials</h2>
-  <blockquote>
-    <p>
-      "This system has transformed how we manage our team. It's indispensable!"
-    </p>
-    <footer>- John Doe, HR Manager</footer>
-  </blockquote>
-
-  <h2>Explore the System</h2>
-  <div class="text-center">
-    <img
-      src="assets/img/screenshot.png"
-      alt="System Screenshot"
-      class="img-fluid"
-    />
-    <p>Preview of the user interface.</p>
-    <button mat-raised-button class="me-auto">Log In</button>
-    <button mat-raised-button class="me-auto">Register</button>
+  <!-- Call to Action Section -->
+  <div class="text-center mt-5">
+    <h2>Get Started Today!</h2>
+    <p>Join us to make HR management seamless and efficient.</p>
+    <button mat-raised-button color="accent" class="btn btn-lg">Sign Up</button>
   </div>
 </div>

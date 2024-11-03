@@ -1,6 +1,6 @@
-# Human Resources Management System (HRMS) - Frontend
+# Human Resources Nexus Management System (HRMS) - Frontend
 
-This is the **frontend** for the **Human Resources Management System (HRMS)** built using **Angular**. The application is fully **responsive**, providing a user-friendly interface for managing employees, vacation requests, performance evaluations, and other HR-related functionalities. This frontend interacts with a **Spring Boot** backend and connects to a **MySQL** database. This backend is made with docker so it can be easily used.
+This is the **frontend** for the **Human Resources Nexus Management System (HRMS)** built using **Angular**. The application is fully **responsive**, providing a user-friendly interface for managing employees, vacation requests, performance evaluations, and other HR-related functionalities. This frontend interacts with a **Spring Boot** backend and connects to a **MySQL** database. This backend is made with docker so it can be easily used.
 
 ## Key Features
 
