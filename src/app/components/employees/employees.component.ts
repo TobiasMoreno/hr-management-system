@@ -1,12 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { EmployeeStateService } from './services/employees-state.service';
 import { BasicTableComponent } from '../../shared/basic-table/basic-table.component';
-import { IEmployee, TableColumn } from '../../shared/interface';
+import { TableColumn } from '../../shared/interfaces/interface';
 import { JsonPipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { PrintPdfService } from '../../shared/services/print-pdf.service';
 import { MatIcon } from '@angular/material/icon';
+import { IEmployee } from '@/app/shared/interfaces/employees-interface';
 
 @Component({
   selector: 'app-employees',
@@ -259,7 +260,7 @@ export default class EmployeesComponent implements OnInit {
     this.columns
       .filter((column) => column.headerName !== 'Actions')
       .map((column) => column.accessorKey)
-      .forEach((column) => contentPdf.push(column));
+      .forEach((column) => contentPdf.push(column!));
 
     const headerNames: string[] = [];
     this.columns

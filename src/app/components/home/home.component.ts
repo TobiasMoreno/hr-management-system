@@ -1,4 +1,4 @@
-import { TreeNode } from '@/app/shared/interface';
+import { TreeNode } from '@/app/shared/interfaces/interface';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';

@@ -9,7 +9,7 @@ import {
   switchMap,
 } from 'rxjs';
 import { signalSlice } from 'ngxtension/signal-slice';
-import { EmployeesState } from '../../../shared/interface';
+import { EmployeesState } from '@/app/shared/interfaces/employees-interface';
 
 @Injectable()
 export class EmployeeStateService {

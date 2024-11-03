@@ -1,4 +1,3 @@
-import { ComponentType } from '@angular/cdk/portal';
 import { FormControl } from '@angular/forms';
 
 export interface IEmployee {
@@ -33,23 +32,6 @@ export interface EmployeesState {
   filter: { query: string; page: number };
 }
 
-export interface TableColumn {
-  headerName: string;
-  accessorKey: string; // La clave del dato en los ítems para mostrar en la columna
-}
-
-export interface VacationsForm {
-  startDate: FormControl<string | null>;
-  endDate: FormControl<string | null>;
-}
-
-export interface FeedbackForm {
-  performanceReviewId: FormControl<number | null>;
-  feedbackGiverEmployeeId: FormControl<number | null>;
-  comments: FormControl<string | null>;
-  feedbackDate: FormControl<string | null>;
-}
-
 export interface EmployeeDetailForm {
   id: FormControl<number | null>;
   firstName: FormControl<string | null>;
@@ -59,14 +41,4 @@ export interface EmployeeDetailForm {
   hireDate: FormControl<string | null>;
   departmentId: FormControl<number | null>;
   salary: FormControl<number | null>;
-}
-
-export interface PdfData {
-  [key: string]: any;
-}
-
-export interface TreeNode {
-  name: string;
-  children: TreeNode[];
-  component?: ComponentType<any>;
 }

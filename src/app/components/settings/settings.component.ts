@@ -3,7 +3,7 @@ import { PrivacySecurityComponent } from './privacy-security/privacy-security.co
 import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { SupportComponent } from './support/support.component';
 import { SystemPreferencesComponent } from './system-preferences/system-preferences.component';
-import { TreeNode } from '@/app/shared/interface';
+import { TreeNode } from '@/app/shared/interfaces/interface';
 import { MatTreeModule, MatTreeNode } from '@angular/material/tree';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';

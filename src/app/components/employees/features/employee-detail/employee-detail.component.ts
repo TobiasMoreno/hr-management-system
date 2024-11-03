@@ -1,5 +1,4 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { EmployeeDetailForm, IEmployee, IEmployeeDTO } from '../../../../shared/interface';
 import { JsonPipe } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
@@ -8,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
 import { EmployeeService } from '../../services/employees.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { EmployeeDetailForm, IEmployee, IEmployeeDTO } from '@/app/shared/interfaces/employees-interface';
 
 @Component({
   selector: 'app-employee-detail',

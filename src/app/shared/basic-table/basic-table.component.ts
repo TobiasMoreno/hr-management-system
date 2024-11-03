@@ -14,7 +14,7 @@ import {
   MatTableDataSource,
   MatTableModule,
 } from '@angular/material/table';
-import { PdfData, TableColumn } from '../interface';
+import { PdfData, TableColumn } from '../interfaces/interface';
 import { MatIcon } from '@angular/material/icon';
 import { PrintPdfService } from '../services/print-pdf.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -35,8 +35,6 @@ import { MatButtonModule } from '@angular/material/button';
 export class BasicTableComponent<T>
   implements AfterViewInit, OnInit, OnChanges
 {
-  pdfService = inject(PrintPdfService);
-
   @Input() columns!: TableColumn[];
   @Input() data: T[] = [];
   displayedColumns: string[] = [];
@@ -48,7 +46,7 @@ export class BasicTableComponent<T>
 
   ngOnInit(): void {
     this.dataSource.data = this.data;
-    this.displayedColumns = this.columns.map((col) => col.accessorKey);
+    this.displayedColumns = this.columns.map((col) => col.accessorKey || '');
   }
 
   ngAfterViewInit(): void {
@@ -59,5 +57,10 @@ export class BasicTableComponent<T>
       this.dataSource.data = changes['data'].currentValue;
     }
   }
-  
+
+  getCellValue(row: T, column: TableColumn): any {
+    return column.accessorFn
+      ? column.accessorFn(row)
+      : (row as any)[column.accessorKey!];
+  }
 }

@@ -8,7 +8,6 @@ import {  MatSelectModule } from '@angular/material/select';
   standalone: true,
   imports: [MatFormFieldModule, MatSelectModule,MatButtonModule],
   templateUrl: './system-preferences.component.html',
-  styleUrl: './system-preferences.component.css'
 })
 export class SystemPreferencesComponent {
 

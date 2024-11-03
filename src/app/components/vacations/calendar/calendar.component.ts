@@ -1,17 +1,16 @@
 import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
-  FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
-import { VacationsForm } from '../../../shared/interface';
 import { JsonPipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { VacationsForm } from '@/app/shared/interfaces/vacation-interface';
 
 @Component({
   selector: 'app-calendar',
@@ -29,27 +28,25 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class CalendarComponent {
   private _fb = inject(FormBuilder);
+  private _snack = inject(MatSnackBar);
 
   vacationsForm = this._fb.group<VacationsForm>({
     startDate: this._fb.control('', [Validators.required]),
     endDate: this._fb.control('', [Validators.required]),
   });
-  submit() {
+
+  onSubmit() {
     if (this.vacationsForm.valid) {
-      console.log(this.vacationsForm.value);
+      this._snack.open('Request submitted successfully', 'Close', {
+        duration: 3000,
+      });
+      this.vacationsForm.reset();
+      this.vacationsForm.markAsUntouched();
+      this.vacationsForm.markAsPristine();
     } else {
-      console.log('Error');
+      this._snack.open('Please fill in all required fields', 'Close', {
+        duration: 3000,
+      });
     }
   }
-
-  range = new FormGroup({
-    start: new FormControl<Date | null>(null),
-    end: new FormControl<Date | null>(null),
-  });
-
-  isRequired = (field: 'start' | 'date', form: FormGroup) => {
-    const control = form.get(field);
-
-    return control && control.touched && control.hasError('required');
-  };
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import jsPdf from 'jspdf';
 import autoTable from 'jspdf-autotable';
-import { PdfData } from '../interface';
+import { PdfData } from '../interfaces/interface';
 
 @Injectable({
   providedIn: 'root',

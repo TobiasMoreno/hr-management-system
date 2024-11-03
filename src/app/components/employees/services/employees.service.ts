@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { BaseHttpService } from '../../../shared/data-access/base-http.service';
-import { IEmployee, IEmployeeDTO } from '../../../shared/interface';
+import { IEmployee, IEmployeeDTO } from '@/app/shared/interfaces/employees-interface';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeService extends BaseHttpService {

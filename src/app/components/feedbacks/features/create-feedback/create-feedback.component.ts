@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { FeedbackForm } from '../../../../shared/interface';
+import { FeedbackForm } from '../../../../shared/interfaces/interface';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxSonnerToaster, toast } from 'ngx-sonner';
 

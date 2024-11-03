@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { EmployeeService } from './employees.service';
 import { map, Observable, switchMap } from 'rxjs';
 import { signalSlice } from 'ngxtension/signal-slice';
-import { EmployeeState } from '../../../shared/interface';
+import { EmployeeState } from '../../../shared/interfaces/interface';
 
 @Injectable()
 export class EmployeeDetailStateService {
