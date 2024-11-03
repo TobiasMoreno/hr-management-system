@@ -1,3 +1,4 @@
+import { ComponentType } from '@angular/cdk/portal';
 import { FormControl } from '@angular/forms';
 
 export interface IEmployee {
@@ -62,4 +63,10 @@ export interface EmployeeDetailForm {
 
 export interface PdfData {
   [key: string]: any;
+}
+
+export interface TreeNode {
+  name: string;
+  children: TreeNode[];
+  component?: ComponentType<any>;
 }

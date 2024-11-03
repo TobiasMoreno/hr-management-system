@@ -11,7 +11,8 @@ export const routes: Routes = [
   },
   {
     path: 'development-plans',
-    loadChildren: () => import('./components/development-plans/development-plans.routes'),
+    loadChildren: () =>
+      import('./components/development-plans/development-plans.routes'),
   },
   {
     path: 'attendances',
@@ -28,6 +29,10 @@ export const routes: Routes = [
   {
     path: 'vacations',
     loadChildren: () => import('./components/vacations/vacations.routes'),
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./components/settings/settings.routes'),
   },
   {
     path: '**',
