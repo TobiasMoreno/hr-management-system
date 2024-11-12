@@ -1,0 +1,81 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4">
+    <h1 class="text-center">Register</h1>
+    <form
+      class="form-group"
+      (ngSubmit)="onRegister()"
+      [formGroup]="registerForm"
+    >
+      @if (errorMsg.length) {
+      <div class="alert alert-danger" role="alert">
+        @for (msg of errorMsg; track $index) {
+        <p>{{ msg }}</p>
+        }
+      </div>
+      }
+
+      <!-- Campo de Email -->
+      <mat-form-field class="w-100">
+        <mat-label>Email</mat-label>
+        <input
+          [(ngModel)]="registerRequest.email"
+          matInput
+          type="email"
+          formControlName="email"
+          placeholder="example@gmail.com"
+          required
+        />
+      </mat-form-field>
+
+      <!-- Campo de First Name -->
+      <mat-form-field class="w-100">
+        <mat-label>First Name</mat-label>
+        <input
+        [(ngModel)]="registerRequest.firstName"
+          type="text"
+          matInput
+          formControlName="firstName"
+          placeholder="Enter your first name"
+          required
+        />
+      </mat-form-field>
+
+      <!-- Campo de Last Name -->
+      <mat-form-field class="w-100">
+        <mat-label>Last Name</mat-label>
+        <input
+        [(ngModel)]="registerRequest.lastName"
+          matInput
+          type="text"
+          formControlName="lastName"
+          placeholder="Enter your last name"
+          required
+        />
+      </mat-form-field>
+
+      <!-- Campo de Password -->
+      <mat-form-field class="w-100">
+        <mat-label>Password</mat-label>
+        <input
+        [(ngModel)]="registerRequest.password"
+          matInput
+          type="password"
+          formControlName="password"
+          placeholder="Choose a password"
+          required
+        />
+      </mat-form-field>
+
+      <!-- Botón de Registro -->
+      <button mat-raised-button color="primary" class="w-100 mt-3">
+        Register
+      </button>
+    </form>
+    <div class="d-flex align-items-center justify-content-center mt-3">
+      <p class="mb-0 me-2">Do you have an account?</p>
+      <button mat-button routerLink="/auth/sign-up" class="m-3">
+        Sign up
+      </button>
+    </div>
+  </div>
+</div>

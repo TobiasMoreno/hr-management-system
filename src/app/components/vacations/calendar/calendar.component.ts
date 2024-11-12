@@ -40,9 +40,6 @@ export class CalendarComponent {
       this._snack.open('Request submitted successfully', 'Close', {
         duration: 3000,
       });
-      this.vacationsForm.reset();
-      this.vacationsForm.markAsUntouched();
-      this.vacationsForm.markAsPristine();
     } else {
       this._snack.open('Please fill in all required fields', 'Close', {
         duration: 3000,

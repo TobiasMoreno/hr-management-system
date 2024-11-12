@@ -35,6 +35,18 @@ export const routes: Routes = [
     loadChildren: () => import('./components/settings/settings.routes'),
   },
   {
+    path: 'auth/sign-up',
+    loadComponent: () => import('./components/auth/auth.component'),
+  },
+  {
+    path: 'auth/register',
+    loadComponent: () => import('./components/auth/register/register.component'),
+  },
+  {
+    path:"auth/activate-account",
+    loadComponent: () => import('./components/auth/activate-account/activate-account.component'),
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },

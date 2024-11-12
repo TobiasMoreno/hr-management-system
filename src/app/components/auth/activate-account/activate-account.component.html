@@ -1,0 +1,40 @@
+@if (submitted) {
+<div class="container justify-content-center d-flex mt-3 w-100 ">
+  @if (isOkay) {
+  <div class="text-center">
+    <h2>Acctivation Successful</h2>
+    <p>Your account has been successfully activated</p>
+    <button mat-raised-button routerLink="/auth/sign-up" class="text-dark">
+      Sign up
+    </button>
+  </div>
+  }@else {
+  <div class="text-center text-danger">
+    <h2>Acctivation failed</h2>
+    <p>Token has been expired or invalid</p>
+    <button
+      mat-raised-button
+      routerLink="/auth/register"
+      class="text-dark"
+      (click)="submitted = false"
+    >
+      Try Again
+    </button>
+  </div>
+  }
+</div>
+
+}@else{
+<div class="container justify-content-center d-flex mt-3 w-100">
+  <div class="text-center" style="width: 400px">
+    <h2>Type you Activation Code</h2>
+    <code-input
+      [isCodeHidden]="false"
+      [codeLength]="6"
+      [code]="'number'"
+      (codeCompleted)="onCodeCompleted($event)"
+    >
+    </code-input>
+  </div>
+</div>
+}

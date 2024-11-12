@@ -1,0 +1,45 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4">
+    <h1 class="text-center">HR Nexus</h1>
+    <form class="form-group mb-4" (submit)="onLogin()" [formGroup]="loginForm">
+      @if (errorMsg.length) {
+      <div class="alert alert-danger" role="alert">
+        @for (msg of errorMsg; track $index) {
+        <p>{{ msg }}</p>
+        }
+      </div>
+      }
+      <mat-form-field class="w-100">
+        <mat-label>Email</mat-label>
+        <input
+          [(ngModel)]="authRequest.email"
+          matInput
+          formControlName="email"
+          type="email"
+          placeholder="example@gmail.com"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Password</mat-label>
+        <input
+          [(ngModel)]="authRequest.password"
+          matInput
+          formControlName="password"
+          type="password"
+          placeholder="Write your password"
+          required
+        />
+      </mat-form-field>
+      <button mat-raised-button color="primary" class="w-100 mt-3">
+        Sign in
+      </button>
+    </form>
+    <div class="d-flex align-items-center justify-content-center mt-3">
+      <p class="mb-0 me-2">Don’t you have an account?</p>
+      <button mat-button routerLink="/auth/register" class="m-3">
+        Register
+      </button>
+    </div>
+  </div>
+</div>

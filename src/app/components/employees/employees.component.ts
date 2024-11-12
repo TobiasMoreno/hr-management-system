@@ -20,7 +20,6 @@ import { IEmployee } from '@/app/shared/interfaces/employees-interface';
     MatIcon,
   ],
   templateUrl: './employees.component.html',
-  styleUrl: './employees.component.css',
   providers: [EmployeeStateService],
 })
 export default class EmployeesComponent implements OnInit {
