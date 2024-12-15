@@ -6,7 +6,7 @@ export const routes: Routes = [
     loadChildren: () => import('./components/employees/employees.routes'),
   },
   {
-    path: 'home',
+    path: '',
     loadChildren: () => import('./components/home/home.routes'),
   },
   {
@@ -45,9 +45,5 @@ export const routes: Routes = [
   {
     path:"auth/activate-account",
     loadComponent: () => import('./components/auth/activate-account/activate-account.component'),
-  },
-  {
-    path: '**',
-    redirectTo: 'home',
-  },
+  }
 ];

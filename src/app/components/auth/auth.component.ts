@@ -68,7 +68,7 @@ export default class AuthComponent {
     this._authService.login(this.authRequest).subscribe({
       next: (res) => {
         this._tokenService.token = res.token as string;
-        this._router.navigate(['/home']);
+        this._router.navigate(['/']);
         console.log(res);
         
       },
