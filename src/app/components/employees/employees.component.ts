@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { EmployeeStateService } from './services/employees-state.service';
 import { BasicTableComponent } from '../../shared/basic-table/basic-table.component';
 import { TableColumn } from '../../shared/interfaces/interface';
-import { JsonPipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { PrintPdfService } from '../../shared/services/print-pdf.service';
@@ -14,7 +13,6 @@ import { IEmployee } from '@/app/shared/interfaces/employees-interface';
   standalone: true,
   imports: [
     BasicTableComponent,
-    JsonPipe,
     MatButtonModule,
     RouterLink,
     MatIcon,
