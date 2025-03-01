@@ -25,45 +25,61 @@
           placeholder="example@gmail.com"
           required
         />
+        @if (registerForm.get('email')?.hasError('required')) {
+        <mat-error>Email is required.</mat-error>
+        } @if (registerForm.get('email')?.hasError('email')) {
+        <mat-error>Invalid email.</mat-error>
+        }
       </mat-form-field>
 
       <!-- Campo de First Name -->
       <mat-form-field class="w-100">
         <mat-label>First Name</mat-label>
         <input
-        [(ngModel)]="registerRequest.firstName"
+          [(ngModel)]="registerRequest.firstName"
           type="text"
           matInput
           formControlName="firstName"
           placeholder="Enter your first name"
           required
         />
+        @if (registerForm.get('firstName')?.hasError('required')) {
+        <mat-error>First Name is required.</mat-error>
+        }
       </mat-form-field>
 
       <!-- Campo de Last Name -->
       <mat-form-field class="w-100">
         <mat-label>Last Name</mat-label>
         <input
-        [(ngModel)]="registerRequest.lastName"
+          [(ngModel)]="registerRequest.lastName"
           matInput
           type="text"
           formControlName="lastName"
           placeholder="Enter your last name"
           required
         />
+        @if (registerForm.get('lastName')?.hasError('required')) {
+        <mat-error>Last Name is required.</mat-error>
+        }
       </mat-form-field>
 
       <!-- Campo de Password -->
       <mat-form-field class="w-100">
         <mat-label>Password</mat-label>
         <input
-        [(ngModel)]="registerRequest.password"
+          [(ngModel)]="registerRequest.password"
           matInput
           type="password"
           formControlName="password"
           placeholder="Choose a password"
           required
         />
+        @if (registerForm.get('password')?.hasError('required')) {
+        <mat-error>Password is required.</mat-error>
+        } @if (registerForm.get('password')?.hasError('minlength')) {
+        <mat-error>Password must be at least 8 characters.</mat-error>
+        }
       </mat-form-field>
 
       <!-- Botón de Registro -->
@@ -73,9 +89,7 @@
     </form>
     <div class="d-flex align-items-center justify-content-center mt-3">
       <p class="mb-0 me-2">Do you have an account?</p>
-      <button mat-button routerLink="/auth/sign-up" class="m-3">
-        Sign up
-      </button>
+      <button mat-button routerLink="/auth/sign-up" class="m-3">Sign up</button>
     </div>
   </div>
 </div>
